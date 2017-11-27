@@ -1,0 +1,336 @@
+﻿@model AREA.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>AREA</title>
+
+    @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/font-awesome.css")
+    @Styles.Render("~/Content/zabuto-calendar.css")
+    @Styles.Render("~/Content/jquery.gritter.css")
+    @Styles.Render("~/Content/lineicons.css")
+    @Styles.Render("~/Content/style-responsive.css")
+    @Scripts.Render("~/Scripts/Chart.js")
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1867059553604361',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.11'
+            });
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.11&appId=1867059553604361';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg" l>
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="/" class="logo"><b>AREA</b></a>
+            <!--logo end-->
+            <div class="top-menu">
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+
+                    <p class="centered"><a href="/"><img src="~/img/myprofil.png" width="60"></a></p>
+                    <h5 class="centered"></h5>
+
+                    <li class="mt">
+                        <a class="active" href="index">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Applets</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-desktop"></i>
+                            <span>My applets</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="general.html">General</a></li>
+                            <li><a href="buttons.html">Buttons</a></li>
+                            <li><a href="panels.html">Panels</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+
+                <div class="row">
+                    <div class="col-md-12" style="text-align:center; margin-top: 4%; font-size: 3em; font-family:'Helvetica Neue', 'Arial Narrow', Arial, sans-serif; font-weight: bold;">
+                        <span style="color:#526ba8;">@ViewBag.userId</span>
+                    </div>
+
+
+                    <div class="col-lg-12 main-chart">
+
+
+                        <div class="row" style="margin-top: 5%;">
+
+                            <!--MODAL FOR OFFICE 365-->
+
+                            <div class="col-md-4 text-center">
+                                <img onclick="document.getElementById('office').style.display='block'" src="~/img/office365.png" style="width: 20%;" />
+                            </div>
+
+                            <div id="office" class="w3-modal">
+                                <div class="w3-modal-content">
+                                    <header class="w3-container w3-teal" style="background-color:#f65314!important">
+                                        <span onclick="document.getElementById('office').style.display='none'"
+                                              class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Choose an action for office 365</h2>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p onclick="document.getElementById('office').style.display='none' ;document.getElementById('triggerOffice1').style.display='block'">Some text..</p>
+                                        <p onclick="document.getElementById('office').style.display='none' ;document.getElementById('triggerOffice2').style.display='block'">Some text..</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--TRIGGER OFFICE 1-->
+                            <div id="triggerOffice1" class="w3-modal">
+                                <div class="w3-modal-content">
+                                    <header class="w3-container w3-teal" style="background-color:#f65314!important">
+                                        <span onclick="document.getElementById('triggerOffice1').style.display='none'"
+                                              class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Choose an action for office 365</h2>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p> triggerOffice1</p>
+                                        <p>triggerOffice1</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--TRIGGER OFFICE 2-->
+                            <div id="triggerOffice2" class="w3-modal">
+                                <div class="w3-modal-content">
+                                    <header class="w3-container w3-teal" style="background-color:#f65314!important">
+                                        <span onclick="document.getElementById('triggerOffice2').style.display='none'"
+                                              class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Choose an action for office 365</h2>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p>triggerOffice2</p>
+                                        <p>triggerOffice2</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--END MODAL FOR OFFICE 365-->
+                            <!--MODAL FOR FACEBOOK-->
+
+                            <div class="col-md-4 text-center">
+                                <img onclick="document.getElementById('facebook').style.display='block'" src="~/img/facebook.png" style="width: 30%;" />
+                            </div>
+
+                            <div id="facebook" class="w3-modal">
+                                <div class="w3-modal-content">
+                                    <header class="w3-container w3-teal" style="background-color:#3f51b5!important">
+                                        <span onclick="document.getElementById('facebook').style.display='none'"
+                                              class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Choose an action for facebook</h2>
+                                        <div class="fb-login-button" data-scope="public_profile, email, publish_actions" data-width="500" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" style="display: table; margin: 0 auto"></div>
+                                    </br>
+                                    </header>
+                                    <div class="w3-container">
+                                        <br />
+                                        <div id="statueToEdit" contenteditable="true" class="well" data-ph="Mettez à jour votre statut !" style="min-height: 500px; height: auto;"></div>
+                                        <style>
+                                            [contentEditable=true]:empty:not(:focus):before {
+                                                content: attr(data-ph);
+                                                }
+                                        </style>
+                                        <button type="button" class="btn btn-primary" onclick="editText()">Valider</button>
+                                        <script>
+                                            function editText() {
+                                                var newStatut = document.getElementById("statueToEdit").innerHTML;
+                                                updateFacebookStatus(newStatut);
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--END MODAL FOR FACEBOOK-->
+
+
+                            <!--MODAL FOR TWITTER-->
+
+                            <div class="col-md-4 text-center">
+                                <img onclick="document.getElementById('twitter').style.display='block'" src="~/img/twitter.png" style="width: 28%;" />
+                            </div>
+
+                            <div id="twitter" class="w3-modal">
+                                <div class="w3-modal-content">
+                                    <header class="w3-container w3-teal" style="background-color:#7bc5f8!important">
+                                        <span onclick="document.getElementById('twitter').style.display='none'"
+                                              class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Choose an action for twitter</h2>
+                                        <form action="/Account/ExternalLogin" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <div id="socialLoginList">
+                                                <p>
+                                                    <button type="submit" class="btn btn-default" id="Twitter" name="provider" value="Twitter" title="Connexion avec votre compte Twitter">Twitter</button>
+                                                </p>
+                                            </div>
+                                        </form>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p onclick="document.getElementById('twitter').style.display='none' ;document.getElementById('triggertwitter1').style.display='block'">Some text..</p>
+                                        <p onclick="document.getElementById('twitter').style.display='none' ;document.getElementById('triggertwitter2').style.display='block'">Some text..</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--TRIGGER FACEBOOK 1-->
+                            <div id="triggertwitter1" class="w3-modal">
+                                <div class="w3-modal-content">
+                                    <header class="w3-container w3-teal" style="background-color:#7bc5f8!important">
+                                        <span onclick="document.getElementById('triggertwitter1').style.display='none'"
+                                              class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Choose an action for twitter</h2>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p> triggertwitter1</p>
+                                        <p>triggertwitter1</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--TRIGGER FACEBOOK 2-->
+                            <div id="triggertwitter2" class="w3-modal">
+                                <div class="w3-modal-content">
+                                    <header class="w3-container w3-teal" style="background-color:#7bc5f8!important">
+                                        <span onclick="document.getElementById('triggertwitter2').style.display='none'"
+                                              class="w3-button w3-display-topright">&times;</span>
+                                        <h2>Choose an action for twitter</h2>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p>triggertwitter2</p>
+                                        <p>triggertwitter2</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--END MODAL FOR TWITTER-->
+
+
+                        </div>
+
+                    </div><!-- /col-lg-9 END SECTION MIDDLE -->
+                    <!-- **********************************************************************************************************************************************************
+                    RIGHT SIDEBAR CONTENT
+                    *********************************************************************************************************************************************************** -->
+
+                </div><! --/row -->
+            </section>
+        </section>
+
+        <!--main content end-->
+        <!--footer start-->
+        <footer></footer>
+        <!--footer end-->
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery-1.8.3.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/jquery.dcjqaccordion.2.7.js")
+    @Scripts.Render("~/Scripts/jquery.scrollTo.min.js")
+    @Scripts.Render("~/Scripts/jquery.nicescroll.js")
+    @Scripts.Render("~/Scripts/jquery.sparkline.js")
+
+    <!--common script for all pages-->
+    @Scripts.Render("~/Scripts/common-scripts.js")
+
+    @Scripts.Render("~/Scripts/jquery.gritter.js")
+    @Scripts.Render("~/Scripts/gritter-conf.js")
+
+    <!--script for this page-->
+    @Scripts.Render("~/Scripts/sparkline-chart.js")
+    @Scripts.Render("~/Scripts/zabuto_calendar.js")
+    <script>
+        function updateFacebookStatus(newStatus) {
+            FB.api(
+                "/me/feed",
+                "POST",
+                {
+                    "message": newStatus
+                },
+                function (response) {
+                    if (response && !response.error) {
+                        console.log("Facebook statut update with : " + newStatus);
+                    }
+                    else
+                        alert("Facebook statut not update");
+                }
+            );
+        }
+    </script>
+    </body>
+</html>
